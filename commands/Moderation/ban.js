@@ -11,7 +11,7 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
-    
+    message.channel.startTyping();
         if(!message.member.hasPermission("BAN_MEMBERS")) {
       return message.channel.send(`**${message.author.username}**, Missing Permissions`)
     }
@@ -33,6 +33,7 @@ module.exports = {
    target.ban({reason: args[1]})
     
     return message.channel.send(`User Banned ${target} (${target.id}) Reason ${args[1]}`)
+        message.channel.stopTyping();
 
         }
         }
